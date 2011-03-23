@@ -366,7 +366,7 @@ class ActionMailer::ARSendmail
 
     smtp = Net::SMTP.new(smtp_settings[:address], smtp_settings[:port])
     if smtp.respond_to?(:enable_starttls_auto)
-      smtp.enable_starttls_auto unless smtp_settings[:tls] == false
+      smtp.enable_starttls_auto unless smtp_settings[:tls] == false || smtp_settings[:enable_starttls_auto] == false
     else
       settings << smtp_settings[:tls]
     end
